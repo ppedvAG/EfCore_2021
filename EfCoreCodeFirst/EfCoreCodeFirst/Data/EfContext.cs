@@ -14,6 +14,7 @@ namespace EfCoreCodeFirst.Data
         {
             //Database.EnsureDeleted();
             Database.EnsureCreated();
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
