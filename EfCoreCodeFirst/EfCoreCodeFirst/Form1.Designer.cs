@@ -60,16 +60,19 @@ namespace EfCoreCodeFirst
             // 
             // button1
             // 
+            this.button1.AutoSize = true;
+            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 46);
+            this.button1.Size = new System.Drawing.Size(243, 42);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Lade alle Mitarbeiter";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.LadeAlleMitarbeiterButtonClick);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(159, 3);
+            this.button2.Location = new System.Drawing.Point(252, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 46);
             this.button2.TabIndex = 1;
@@ -78,7 +81,7 @@ namespace EfCoreCodeFirst
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(315, 3);
+            this.button3.Location = new System.Drawing.Point(408, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 46);
             this.button3.TabIndex = 2;
@@ -87,7 +90,7 @@ namespace EfCoreCodeFirst
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(471, 3);
+            this.button4.Location = new System.Drawing.Point(564, 3);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(150, 46);
             this.button4.TabIndex = 3;
@@ -96,7 +99,7 @@ namespace EfCoreCodeFirst
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(627, 3);
+            this.button5.Location = new System.Drawing.Point(3, 55);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(150, 46);
             this.button5.TabIndex = 4;
@@ -105,7 +108,7 @@ namespace EfCoreCodeFirst
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(3, 55);
+            this.button6.Location = new System.Drawing.Point(159, 55);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(150, 46);
             this.button6.TabIndex = 5;
@@ -133,6 +136,7 @@ namespace EfCoreCodeFirst
             this.Name = "Form1";
             this.Text = "Form1";
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

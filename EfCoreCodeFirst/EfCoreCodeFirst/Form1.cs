@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EfCoreCodeFirst.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +18,11 @@ namespace EfCoreCodeFirst
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LadeAlleMitarbeiterButtonClick(object sender, EventArgs e)
         {
-            MessageBox.Show("Test");
+            var con = new EfContext();
+
+            dataGridView1.DataSource = con.Mitarbeiter.ToList();
         }
     }
 }
