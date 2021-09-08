@@ -36,7 +36,9 @@ namespace EfCoreCodeFirst
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button8 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +54,8 @@ namespace EfCoreCodeFirst
             this.flowLayoutPanel1.Controls.Add(this.button4);
             this.flowLayoutPanel1.Controls.Add(this.button5);
             this.flowLayoutPanel1.Controls.Add(this.button6);
+            this.flowLayoutPanel1.Controls.Add(this.button7);
+            this.flowLayoutPanel1.Controls.Add(this.button8);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -130,6 +134,18 @@ namespace EfCoreCodeFirst
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.LadeMitarbeiterMitLinqLambda);
             // 
+            // button7
+            // 
+            this.button7.AutoSize = true;
+            this.button7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button7.Location = new System.Drawing.Point(356, 51);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(222, 42);
+            this.button7.TabIndex = 6;
+            this.button7.Text = "Zeige Abteilungen";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.ZeigeAbteilungenButton);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -140,7 +156,20 @@ namespace EfCoreCodeFirst
             this.dataGridView1.RowTemplate.Height = 41;
             this.dataGridView1.Size = new System.Drawing.Size(1439, 360);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
+            // 
+            // button8
+            // 
+            this.button8.AutoSize = true;
+            this.button8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button8.Location = new System.Drawing.Point(584, 51);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(354, 42);
+            this.button8.TabIndex = 7;
+            this.button8.Text = "Count Abteilungen of Selected";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.CountAbteilungenOfSelectedMitarbeiter);
             // 
             // Form1
             // 
@@ -169,6 +198,8 @@ namespace EfCoreCodeFirst
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
     }
 }
 

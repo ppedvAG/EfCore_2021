@@ -2,6 +2,8 @@
 using EfCoreCodeFirst.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -19,6 +21,11 @@ namespace EfCoreCodeFirst
 
         private void LadeAlleMitarbeiterButtonClick(object sender, EventArgs e)
         {
+            //dataGridView1.DataSource = con.Mitarbeiter
+            //                              .Include(x => x.Abteilungen) //eager Loading
+            //                              .Include(x => x.Kunden) //eager Loading
+            //                              .ToList();
+
             dataGridView1.DataSource = con.Mitarbeiter.ToList();
         }
 
@@ -52,6 +59,8 @@ namespace EfCoreCodeFirst
         {
             var aff = con.SaveChanges();
             MessageBox.Show($"{aff} Rows affected");
+
+            con = new EfContext(); //reset lazy loading cache
         }
 
         private void DeleteButtonClick(object sender, EventArgs e)
@@ -115,6 +124,39 @@ namespace EfCoreCodeFirst
             //Detach
             con.Entry(con.Mitarbeiter.FirstOrDefault()).State = EntityState.Detached;
 
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is IEnumerable<Abteilung> abts)
+                e.Value = string.Join(", ", abts.Select(x => x.Bezeichnung));
+        }
+
+        private void ZeigeAbteilungenButton(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow.DataBoundItem is Mitarbeiter selectedMitarbeiter)
+            {
+                //expl. Loading (Collection)
+                con.Entry(selectedMitarbeiter).Collection(x => x.Abteilungen).Load();
+
+
+                //expl. Loading (Ref.)
+                // con.Entry(new Kunde()).Reference(x => x.Ansprechpartner).Load();
+
+                //anzeigen
+                var txt = $"Abteilungen: {string.Join(", ", selectedMitarbeiter.Abteilungen.Select(x => x.Bezeichnung))}";
+                MessageBox.Show(txt);
+            }
+        }
+
+        private void CountAbteilungenOfSelectedMitarbeiter(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow.DataBoundItem is Mitarbeiter selectedMitarbeiter)
+            {
+                //con.Entry(selectedMitarbeiter).Collection(x => x.Abteilungen).Query().Where(x => x.Bezeichnung.StartsWith("A");
+                var abtCount = con.Entry(selectedMitarbeiter).Collection(x => x.Abteilungen).Query().Count();
+                MessageBox.Show($"{selectedMitarbeiter.Name} ist in {abtCount} Abteilungen");
+            }
         }
     }
 }

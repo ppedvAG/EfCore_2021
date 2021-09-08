@@ -6,7 +6,7 @@ namespace EfCoreCodeFirst.Model
     {
         public int Id { get; set; }
         public string Bezeichnung { get; set; }
-        public ICollection<Mitarbeiter> Mitarbeiter { get; set; } = new HashSet<Mitarbeiter>();
+        public virtual ICollection<Mitarbeiter> Mitarbeiter { get; set; } = new HashSet<Mitarbeiter>();
 
     }
 }

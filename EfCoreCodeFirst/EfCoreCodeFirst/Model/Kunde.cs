@@ -3,6 +3,6 @@
     public class Kunde : Person
     {
         public string Kundennummer { get; set; }
-        public Mitarbeiter Ansprechpartner { get; set; }
+        public virtual Mitarbeiter Ansprechpartner { get; set; }
     }
 }
