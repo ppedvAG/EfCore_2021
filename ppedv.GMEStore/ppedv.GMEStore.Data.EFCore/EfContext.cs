@@ -9,11 +9,6 @@ namespace ppedv.GMEStore.Data.EFCore
         public DbSet<Company> Companies { get; set; }
         public DbSet<Genre> Genres { get; set; }
 
-        public EfContext()
-        {
-            Database.EnsureCreated();
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.GMEStore.Model", "ppe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.GMEStore.Data.EFCore", "ppedv.GMEStore.Data.EFCore\ppedv.GMEStore.Data.EFCore.csproj", "{27CFD583-947D-421E-B697-FE2F1BA655BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.GMEStore.Data.EFCore.Tests", "ppedv.GMEStore.Data.EFCore.Tests\ppedv.GMEStore.Data.EFCore.Tests.csproj", "{F9BDA8AC-C28D-4D0C-96F2-6A3A8B6584AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{27CFD583-947D-421E-B697-FE2F1BA655BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27CFD583-947D-421E-B697-FE2F1BA655BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27CFD583-947D-421E-B697-FE2F1BA655BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9BDA8AC-C28D-4D0C-96F2-6A3A8B6584AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9BDA8AC-C28D-4D0C-96F2-6A3A8B6584AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9BDA8AC-C28D-4D0C-96F2-6A3A8B6584AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9BDA8AC-C28D-4D0C-96F2-6A3A8B6584AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
