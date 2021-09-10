@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ppedv.GMEStore.Model;
+using System;
+using System.Linq;
 
 namespace ppedv.GMEStore.Data.EFCore
 {
@@ -29,6 +31,41 @@ namespace ppedv.GMEStore.Data.EFCore
                         .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<Game>().HasIndex(x => x.Published);
+
+
+            //modelBuilder.Entity<Entity>().Property(x => x.Modified).HasValueGenerator("GetDate()").ValueGeneratedOnUpdate();
+
+            modelBuilder.Entity<Game>().Property(x => x.Modified).IsConcurrencyToken();
+
+            
+        }
+
+
+        public override int SaveChanges()
+        {
+            var dt = DateTime.Now;
+
+            foreach (var item in ChangeTracker.Entries().Where(x => x.State == EntityState.Added))
+            {
+                if (item.Entity is Entity en)
+                {
+                    en.Created = dt;
+                    en.Modified = dt;
+                    en.ModifiedBy = Environment.UserName;
+                }
+            }
+
+            foreach (var item in ChangeTracker.Entries().Where(x => x.State == EntityState.Modified))
+            {
+                if (item.Entity is Entity en)
+                {
+                    en.Modified = dt;
+                    en.ModifiedBy = Environment.UserName;
+                }
+            }
+
+
+            return base.SaveChanges();
         }
     }
 }

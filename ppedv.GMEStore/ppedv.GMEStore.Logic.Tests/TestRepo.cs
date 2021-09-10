@@ -14,6 +14,16 @@ namespace ppedv.GMEStore.Logic.Tests
 
         public IRepository<Company> CompanyRepository => throw new NotImplementedException();
 
+        public void ConcurrencyDBWins(Entity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ConcurrencyUserWins(Entity entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public int SaveAll()
         {
             throw new NotImplementedException();

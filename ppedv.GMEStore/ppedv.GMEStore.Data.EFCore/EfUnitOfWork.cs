@@ -1,9 +1,13 @@
-﻿using ppedv.GMEStore.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using ppedv.GMEStore.Model;
 using ppedv.GMEStore.Model.Contracts;
+using ppedv.GMEStore.Model.Exceptions;
+using System;
+using System.Linq;
 
 namespace ppedv.GMEStore.Data.EFCore
 {
-    public class EfUnitOfWork : IUnitOfWork
+    public class EfUnitOfWork : IUnitOfWork, IDisposable
     {
         EfContext _context = new EfContext();
 
@@ -13,9 +17,39 @@ namespace ppedv.GMEStore.Data.EFCore
 
         public IRepository<Company> CompanyRepository => new EfRepository<Company>(_context);
 
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
+
+
+        public void ConcurrencyUserWins(Entity entity)
+        {
+            var entry = _context.ChangeTracker.Entries().First(x => x.Entity == entity);
+            entry.OriginalValues.SetValues(entry.GetDatabaseValues());
+
+        }
+
+        public void ConcurrencyDBWins(Entity entity)
+        {
+            _context.ChangeTracker.Entries().First().Reload();
+        }
+
+
         public int SaveAll()
         {
-            return _context.SaveChanges();
+            try
+            {
+                return _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new GMEDbConcurrencyException(ex, null, (Entity)ex.Entries.First().Entity);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
     }
 }

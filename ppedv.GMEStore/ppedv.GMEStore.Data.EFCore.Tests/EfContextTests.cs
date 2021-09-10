@@ -244,5 +244,32 @@ namespace ppedv.GMEStore.Data.EFCore.Tests
             }
         }
 
+        [Fact]
+        public void EfContext_Concurreny()
+        {
+            var g = new Game() { Name = "Best Game ever" };
+
+            using (var con = new EfContext())
+            {
+                con.Add(g);
+                con.SaveChanges();
+            }
+
+            using (var con = new EfContext())
+            {
+                var loaded = con.Find<Game>(g.Id);
+                loaded.Name = "So lalal";
+
+                using (var con2 = new EfContext())
+                {
+                    var loaded2 = con2.Find<Game>(g.Id);
+                    loaded2.Name = "Over Mega Game";
+                    con2.SaveChanges();
+                }
+
+                Assert.Throws<DbUpdateConcurrencyException>(() => con.SaveChanges());
+            }
+        }
+
     }
 }
