@@ -20,11 +20,13 @@ namespace ppedv.GMEStore.Data.EFCore
         {
             modelBuilder.Entity<Game>()
                         .HasOne(x => x.Developer)
-                        .WithMany(x => x.Developed);
+                        .WithMany(x => x.Developed)
+                        .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<Game>()
                         .HasOne(x => x.Publisher)
-                        .WithMany(x => x.Published);
+                        .WithMany(x => x.Published)
+                        .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
