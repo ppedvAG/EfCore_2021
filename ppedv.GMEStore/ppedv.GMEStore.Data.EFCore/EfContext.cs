@@ -27,6 +27,8 @@ namespace ppedv.GMEStore.Data.EFCore
                         .HasOne(x => x.Publisher)
                         .WithMany(x => x.Published)
                         .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<Game>().HasIndex(x => x.Published);
         }
     }
 }
