@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.GMEStore.Logic", "ppe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.GMEStore.UI.DevConsole", "ppedv.GMEStore.UI.DevConsole\ppedv.GMEStore.UI.DevConsole.csproj", "{4733DBC9-F8A2-4D1A-B55B-1F191F62E0BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.GMEStore.Logic.Tests", "ppedv.GMEStore.Logic.Tests\ppedv.GMEStore.Logic.Tests.csproj", "{65C0A6E3-39C8-451D-AE4F-439F047FEBA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4733DBC9-F8A2-4D1A-B55B-1F191F62E0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4733DBC9-F8A2-4D1A-B55B-1F191F62E0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4733DBC9-F8A2-4D1A-B55B-1F191F62E0BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65C0A6E3-39C8-451D-AE4F-439F047FEBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65C0A6E3-39C8-451D-AE4F-439F047FEBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65C0A6E3-39C8-451D-AE4F-439F047FEBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65C0A6E3-39C8-451D-AE4F-439F047FEBA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
