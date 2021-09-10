@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.GMEStore.UI.DevConsol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.GMEStore.Logic.Tests", "ppedv.GMEStore.Logic.Tests\ppedv.GMEStore.Logic.Tests.csproj", "{65C0A6E3-39C8-451D-AE4F-439F047FEBA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.GMEStore.UI.WebApi", "ppedv.GMEStore.UI.WebApi\ppedv.GMEStore.UI.WebApi.csproj", "{931077AC-E790-45CC-80E7-D4A7ED95CD2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{65C0A6E3-39C8-451D-AE4F-439F047FEBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65C0A6E3-39C8-451D-AE4F-439F047FEBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65C0A6E3-39C8-451D-AE4F-439F047FEBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{931077AC-E790-45CC-80E7-D4A7ED95CD2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{931077AC-E790-45CC-80E7-D4A7ED95CD2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{931077AC-E790-45CC-80E7-D4A7ED95CD2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{931077AC-E790-45CC-80E7-D4A7ED95CD2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
