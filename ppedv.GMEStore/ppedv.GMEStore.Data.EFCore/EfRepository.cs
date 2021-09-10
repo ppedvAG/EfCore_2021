@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ppedv.GMEStore.Model;
 using ppedv.GMEStore.Model.Contracts;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ppedv.GMEStore.Data.EFCore
 {
