@@ -21,7 +21,7 @@ namespace ppedv.GMEStore.Logic.Tests
         [Fact]
         public void GetCompanyThatPublisheMostGamesOfYear_2_publishers_p2_has_more_games_TestRepo()
         {
-            var core = new Core(new TestRepo());
+            var core = new Core(new TestUoW());
 
             var result = core.GetCompanyThatPublisheMostGamesOfYear(1);
 
@@ -32,8 +32,8 @@ namespace ppedv.GMEStore.Logic.Tests
         [Fact]
         public void GetCompanyThatPublisheMostGamesOfYear_2_publishers_p2_has_more_games_MOQ()
         {
-            var mock = new Mock<IRepository>();
-            mock.Setup(x => x.QueryGamesIncludingAll())
+            var gameRepoMock = new Mock<IGameRepository>();
+            gameRepoMock.Setup(x => x.QueryGamesIncludingAll())
                 .Returns(() =>
                 {
                     var p1 = new Company() { Name = "P1" };
@@ -49,20 +49,26 @@ namespace ppedv.GMEStore.Logic.Tests
                     return new[] { p1, p2 }.SelectMany(x => x.Published).AsQueryable();
                 });
 
-            var core = new Core(mock.Object);
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GameRepository).Returns(gameRepoMock.Object);
+            var core = new Core(uowMock.Object);
+
 
             var result = core.GetCompanyThatPublisheMostGamesOfYear(1);
 
             Assert.Equal("P2", result.Name);
 
-            mock.Verify(x => x.QueryGamesIncludingAll(), Times.Once);
+            gameRepoMock.Verify(x => x.QueryGamesIncludingAll(), Times.Once);
         }
 
         [Fact]
         public void GetCompanyThatPublisheMostGamesOfYear_empty_db_return_null()
         {
-            var mock = new Mock<IRepository>();
-            var core = new Core(mock.Object);
+            var gameRepoMock = new Mock<IGameRepository>();
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GameRepository).Returns(gameRepoMock.Object);
+
+            var core = new Core(uowMock.Object);
 
             var result = core.GetCompanyThatPublisheMostGamesOfYear(1);
 

@@ -7,11 +7,11 @@ namespace ppedv.GMEStore.Logic
 {
     public class Core
     {
-        public IRepository Repository { get; }
+        public IUnitOfWork UnitOfWork { get; }
 
-        public Core(IRepository repository)
+        public Core(IUnitOfWork uow)
         {
-            Repository = repository;
+            UnitOfWork = uow;
         }
 
         public Company GetCompanyThatPublisheMostGamesOfYear(int year)
@@ -19,7 +19,7 @@ namespace ppedv.GMEStore.Logic
             if (year < 0)
                 throw new ArgumentException("Das Jahr darf nicht negativ sein");
 
-            var result = Repository.QueryGamesIncludingAll().Where(x => x.Published.Year == year)
+            var result = UnitOfWork.GameRepository.QueryGamesIncludingAll().Where(x => x.Published.Year == year)
                                                       .GroupBy(x => x.Publisher)
                                                       .OrderByDescending(x => x.Count());
             if (result.Count() == 0)

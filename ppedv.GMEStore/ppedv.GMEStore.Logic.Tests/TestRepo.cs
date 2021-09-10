@@ -5,24 +5,39 @@ using System.Linq;
 
 namespace ppedv.GMEStore.Logic.Tests
 {
-    public class TestRepo : IRepository
+
+    public class TestUoW : IUnitOfWork
     {
-        public void Add<T>(T entity) where T : Entity
+        public IGameRepository GameRepository => new TestRepo();
+
+        public IRepository<Genre> GenreRepository => throw new NotImplementedException();
+
+        public IRepository<Company> CompanyRepository => throw new NotImplementedException();
+
+        public int SaveAll()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class TestRepo : IGameRepository
+    {
+        public void Add(Game entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete<T>(T entity) where T : Entity
+        public void Delete(Game entity)
         {
             throw new NotImplementedException();
         }
 
-        public T GetById<T>(int id) where T : Entity
+        public Game GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<T> Query<T>() where T : Entity
+        public IQueryable<Game> Query()
         {
             throw new NotImplementedException();
         }
@@ -42,12 +57,7 @@ namespace ppedv.GMEStore.Logic.Tests
             return new[] { p1, p2 }.SelectMany(x => x.Published).AsQueryable();
         }
 
-        public int SaveAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update<T>(T entity) where T : Entity
+        public void Update(Game entity)
         {
             throw new NotImplementedException();
         }

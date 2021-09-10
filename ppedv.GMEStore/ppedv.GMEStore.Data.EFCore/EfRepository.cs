@@ -1,15 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ppedv.GMEStore.Model;
+﻿using ppedv.GMEStore.Model;
 using ppedv.GMEStore.Model.Contracts;
 using System.Linq;
 
 namespace ppedv.GMEStore.Data.EFCore
 {
-    public class EfRepository : IRepository
-    {
-        EfContext _context = new EfContext();
 
-        public void Add<T>(T entity) where T : Entity
+    public class EfRepository<T> : IRepository<T> where T : Entity
+    {
+        protected readonly EfContext _context;
+
+        public EfRepository(EfContext context)
+        {
+            _context = context;
+        }
+
+        public void Add(T entity)
         {
             //if (typeof(T) == typeof(Company))
             //    _context.Companies.Add(entity as Company);
@@ -17,34 +22,25 @@ namespace ppedv.GMEStore.Data.EFCore
             _context.Set<T>().Add(entity);
         }
 
-        public void Delete<T>(T entity) where T : Entity
+
+        public void Delete(T entity)
         {
             _context.Set<T>().Remove(entity);
         }
 
-        public IQueryable<T> Query<T>() where T : Entity
+        public IQueryable<T> Query()
         {
             return _context.Set<T>();
         }
 
-        public T GetById<T>(int id) where T : Entity
+        public T GetById(int id)
         {
             return _context.Set<T>().Find(id);
         }
 
-        public int SaveAll()
-        {
-            return _context.SaveChanges();
-        }
-
-        public void Update<T>(T entity) where T : Entity
+        public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
-        }
-
-        public IQueryable<Game> QueryGamesIncludingAll()
-        {
-            return Query<Game>().Include(x => x.Genres).Include(x => x.Developer).Include(x => x.Publisher);
         }
     }
 }
